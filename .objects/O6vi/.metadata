@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Chrome Download NVIDIA App for Gamers and Creators  NVIDIA",
+  "Type": "App",
+  "Id": "O6viL5-LqUOdRDOpV9XHBA",
+  "Reference": "EFwg_zIsiUOfr0Ex3fWmGA/O6viL5-LqUOdRDOpV9XHBA",
+  "Created": "2025-01-08T21:37:34.453474Z",
+  "Updated": "2025-01-08T21:37:34.453474Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.12.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.12.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

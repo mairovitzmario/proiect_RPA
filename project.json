@@ -4,7 +4,9 @@
   "description": "Blank Process",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.System.Activities": "[24.12.0-preview]"
+    "UiPath.System.Activities": "[24.12.0-preview]",
+    "UiPath.UIAutomation.Activities": "[24.12.3-preview]",
+    "UiPath.UIAutomation.Activities.Design.RecoveryPanel": "[24.12.3-preview]"
   },
   "webServices": [],
   "entitiesStores": [],

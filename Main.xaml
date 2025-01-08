@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -31,6 +31,16 @@
       <x:String>System.Reflection</x:String>
       <x:String>System.Management.Automation</x:String>
       <x:String>System.Dynamic</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -84,9 +94,16 @@
       <AssemblyReference>System.CodeDom</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1224,1157" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1276,5782" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sco:Collection(x:Boolean)" Name="internetStatusAux" />
       <Variable x:TypeArguments="x:Boolean" Default="False" Name="internetStatus" />
@@ -98,7 +115,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[internetStatus = False]" DisplayName="While" sap:VirtualizedContainerService.HintSize="470,801" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+    <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[internetStatus = False]" DisplayName="While" sap:VirtualizedContainerService.HintSize="560,801" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
       <ui:InterruptibleWhile.Body>
         <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,671" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
@@ -146,7 +163,7 @@
         </Sequence>
       </ui:InterruptibleWhile.Body>
     </ui:InterruptibleWhile>
-    <ui:InvokePowerShell x:TypeArguments="x:String" ContinueOnError="{x:Null}" CommandText="&#xD;&#xA;Import-Module CimCmdlets&#xD;&#xA;$gpuInfo = Get-CimInstance Win32_VideoController | Select-Object -ExpandProperty Name&#xD;&#xA;&#xD;&#xA;$manufacturer = if ($gpuInfo -match '(NVIDIA)') {&#xD;&#xA;    'NVIDIA'&#xD;&#xA;} elseif ($gpuInfo -match '(AMD|Radeon)') {&#xD;&#xA;    'AMD'&#xD;&#xA;} elseif ($gpuInfo -match '(Intel)') {&#xD;&#xA;    'Intel'&#xD;&#xA;} else {&#xD;&#xA;    'Unknown'&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;$manufacturer&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" DisplayName="Invoke Power Shell" sap:VirtualizedContainerService.HintSize="470,111" sap2010:WorkflowViewState.IdRef="InvokePowerShell`1_4" IsScript="True" Output="[GPUAux]" PowerShellProcess="PowerShellCore">
+    <ui:InvokePowerShell x:TypeArguments="x:String" ContinueOnError="{x:Null}" CommandText="wmic path win32_VideoController get name" DisplayName="Invoke Power Shell" sap:VirtualizedContainerService.HintSize="560,111" sap2010:WorkflowViewState.IdRef="InvokePowerShell`1_4" IsScript="True" Output="[GPUAux]" PowerShellProcess="PowerShellCore">
       <ui:InvokePowerShell.Parameters>
         <scg:Dictionary x:TypeArguments="x:String, InArgument" />
       </ui:InvokePowerShell.Parameters>
@@ -154,14 +171,319 @@
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:InvokePowerShell.PowerShellVariables>
     </ui:InvokePowerShell>
-    <Assign sap:VirtualizedContainerService.HintSize="470,114" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign sap:VirtualizedContainerService.HintSize="560,114" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[GPU]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[GPUAux(0)]</InArgument>
+        <InArgument x:TypeArguments="x:String">[String.Join(" ", GPUAux)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="470,108" sap2010:WorkflowViewState.IdRef="MessageBox_9" Text="[GPU]" />
+    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="560,4733" sap2010:WorkflowViewState.IdRef="Sequence_41">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If Condition="[GPU.Contains(&quot;AMD&quot;)]" sap:VirtualizedContainerService.HintSize="526,807" sap2010:WorkflowViewState.IdRef="If_9">
+        <If.Then>
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="518,580" sap2010:WorkflowViewState.IdRef="Sequence_43">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Drivers and Support for Processors and Graphics" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="484,520" sap2010:WorkflowViewState.IdRef="NApplicationCard_21" InteractionMode="DebuggerApi" IsDisplayNameAuto="True" ScopeGuid="2c39c1dc-b456-41d4-81df-69ad7046d860" Version="V2">
+              <uix:NApplicationCard.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,280" sap2010:WorkflowViewState.IdRef="Sequence_42">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Download Windows Drivers''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,218" sap2010:WorkflowViewState.IdRef="NClick_20" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="2c39c1dc-b456-41d4-81df-69ad7046d860" Version="V4">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="amd.com/en/support/download/drivers.html" CVScreenId="db4004bc-5f4e-45c2-bf87-443d3490ed03" CvElementArea="249, 783, 315, 60" CvTextArea="285, 804, 213, 16" CvTextArgument="Download Windows Drivers" CvType="Button" DesignTimeRectangle="251, 784, 312, 58" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='  &amp;#x9;Download Windows Drivers   &amp;#x9; &amp;#x9;       ' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='  &amp;#x9;Download Windows Drivers   &amp;#x9; &amp;#x9;       ' tag='A' type='' class='' check:innerText='Download Windows Drivers' /&gt;" Guid="677bf2e1-4253-40b7-a45a-92f44bcf43ae" InformativeScreenshot="84402e7710ba6d9a681ff566363034c7.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Drivers and Support for Processors and Graphics' /&gt;" SearchSteps="FuzzySelector, CV" Version="V5" Visibility="Interactive" />
+                      </uix:NClick.Target>
+                      <uix:NClick.VerifyOptions>
+                        <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                          <uix:VerifyExecutionOptions.Retry>
+                            <InArgument x:TypeArguments="x:Boolean" />
+                          </uix:VerifyExecutionOptions.Retry>
+                          <uix:VerifyExecutionOptions.Timeout>
+                            <InArgument x:TypeArguments="x:Double" />
+                          </uix:VerifyExecutionOptions.Timeout>
+                        </uix:VerifyExecutionOptions>
+                      </uix:NClick.VerifyOptions>
+                    </uix:NClick>
+                  </Sequence>
+                </ActivityAction>
+              </uix:NApplicationCard.Body>
+              <uix:NApplicationCard.TargetApp>
+                <uix:TargetApp Area="-8, -8, 1936, 1048" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="6073a10a582e615b7da29c3a1278621a.jpg" Selector="&lt;html app='chrome.exe' title='Drivers and Support for Processors and Graphics' /&gt;" Url="https://www.amd.com/en/support/download/drivers.html" Version="V2" />
+              </uix:NApplicationCard.TargetApp>
+            </uix:NApplicationCard>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="518,89" sap2010:WorkflowViewState.IdRef="Sequence_44">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+      <If Condition="[GPU.Contains(&quot;Intel&quot;)]" sap:VirtualizedContainerService.HintSize="526,807" sap2010:WorkflowViewState.IdRef="If_10">
+        <If.Then>
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="518,580" sap2010:WorkflowViewState.IdRef="Sequence_46">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Intel® Driver &amp; Support Assistant" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="484,520" sap2010:WorkflowViewState.IdRef="NApplicationCard_22" InteractionMode="DebuggerApi" IsDisplayNameAuto="True" ScopeGuid="d2e1e82c-44ec-4924-a67c-0aebb453eafc" Version="V2">
+              <uix:NApplicationCard.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,280" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Download now''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,218" sap2010:WorkflowViewState.IdRef="NClick_21" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="d2e1e82c-44ec-4924-a67c-0aebb453eafc" Version="V4">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="intel.com/content/www/us/en/support/detect.html" CVScreenId="d621a75b-4f59-4418-9246-229857d60b2c" CvElementArea="251, 595, 147, 44" CvTextArea="276, 610, 96, 13" CvTextArgument="Download now" CvType="Button" DesignTimeRectangle="252, 597, 144, 40" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl class='btn-download' parentid='supportDSAMultiStepBlade-1' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl class='btn-download' parentid='supportDSAMultiStepBlade-1' tag='A' type='' aaname='Download now' check:innerText='Download now' /&gt;" Guid="e75f788d-76b5-4875-88c7-1f39e7bbcb55" InformativeScreenshot="58b44cb86cbe8e02a27e21a0fb12c59b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Intel® Driver &amp;amp; Support Assistant' /&gt;" SearchSteps="FuzzySelector, CV" Version="V5" Visibility="Interactive" />
+                      </uix:NClick.Target>
+                      <uix:NClick.VerifyOptions>
+                        <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                          <uix:VerifyExecutionOptions.Retry>
+                            <InArgument x:TypeArguments="x:Boolean" />
+                          </uix:VerifyExecutionOptions.Retry>
+                          <uix:VerifyExecutionOptions.Timeout>
+                            <InArgument x:TypeArguments="x:Double" />
+                          </uix:VerifyExecutionOptions.Timeout>
+                        </uix:VerifyExecutionOptions>
+                      </uix:NClick.VerifyOptions>
+                    </uix:NClick>
+                  </Sequence>
+                </ActivityAction>
+              </uix:NApplicationCard.Body>
+              <uix:NApplicationCard.TargetApp>
+                <uix:TargetApp Area="-8, -8, 1936, 1048" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="3d039c6fee8bda8f600bb8708e24cd89.jpg" Selector="&lt;html app='chrome.exe' title='Intel® Driver &amp;amp; Support Assistant' /&gt;" Url="https://www.intel.com/content/www/us/en/support/detect.html" Version="V2" />
+              </uix:NApplicationCard.TargetApp>
+            </uix:NApplicationCard>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="518,89" sap2010:WorkflowViewState.IdRef="Sequence_47">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+      <If Condition="[GPU.Contains(&quot;NVIDIA&quot;)]" sap:VirtualizedContainerService.HintSize="526,929" sap2010:WorkflowViewState.IdRef="If_11">
+        <If.Then>
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="524,702" sap2010:WorkflowViewState.IdRef="Sequence_49">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: NVIDIA GeForce Experience Application | Driver Details | Dell Romania" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="490,642" sap2010:WorkflowViewState.IdRef="NApplicationCard_23" InteractionMode="DebuggerApi" IsDisplayNameAuto="True" ScopeGuid="2276d958-3694-4650-8304-6816572920f0" Version="V2">
+              <uix:NApplicationCard.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="456,402" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Descărcare''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,225" sap2010:WorkflowViewState.IdRef="NClick_22" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="2276d958-3694-4650-8304-6816572920f0" Version="V4">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="dell.com/support/home/ro-ro/drivers/driversdetails" DesignTimeRectangle="648, 753, 114, 40" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl id='driversDownload-2036787277' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl id='driversDownload-2036787277' tag='A' type='' class='text-decoration-none pointer-cursor dellmetrics-driverdownloads btn btn-primary mt-2' aaname=' Descărcare ' check:innerText='Descărcare' /&gt;" Guid="ca7cddb7-a875-4af1-8c4d-68996a311410" InformativeScreenshot="7f02c8c1794d01a28a23a3d1442a3e04.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='NVIDIA GeForce Experience Application | Driver Details | Dell Romania' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive" />
+                      </uix:NClick.Target>
+                      <uix:NClick.VerifyOptions>
+                        <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                          <uix:VerifyExecutionOptions.Retry>
+                            <InArgument x:TypeArguments="x:Boolean" />
+                          </uix:VerifyExecutionOptions.Retry>
+                          <uix:VerifyExecutionOptions.Timeout>
+                            <InArgument x:TypeArguments="x:Double" />
+                          </uix:VerifyExecutionOptions.Timeout>
+                        </uix:VerifyExecutionOptions>
+                      </uix:NClick.VerifyOptions>
+                    </uix:NClick>
+                    <Delay Duration="00:00:07" sap:VirtualizedContainerService.HintSize="416,115" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                  </Sequence>
+                </ActivityAction>
+              </uix:NApplicationCard.Body>
+              <uix:NApplicationCard.TargetApp>
+                <uix:TargetApp Area="-8, -8, 1936, 1048" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADZSURBVDhPY2ArOv2fEjxqAJIB6q2X/kvXnYdL8JSe+S/fcAHMVmy8CKa5gWL85WfhakAYbsCbL7//77v18f/i02/+S9We/7/n5sf/Wase/Dftvfr/8rNvYDUeM27+n3jwBXYDjt3/DKZBGu+++fE/efm9/ycefPmfsfL+/8fvf4LlCBrAV3b2/7nHX/+vOv/2/7tvf/6nrbj//9DdT/+vPifCBScffgF7IWbxXTC/esvj/1uvvv8vUnXu/9qL7/6fBRo89fDL/9defAOzMQwgF48aQLEBp/8DANlna/vD54iyAAAAAElFTkSuQmCC" InformativeScreenshot="cd5d87ae2d9c6e1fd5b36bd06aa588a5.jpg" Selector="&lt;html app='chrome.exe' title='NVIDIA GeForce Experience Application | Driver Details | Dell Romania' /&gt;" Url="https://www.dell.com/support/home/ro-ro/drivers/driversdetails?driverid=p6j51" Version="V2" />
+              </uix:NApplicationCard.TargetApp>
+            </uix:NApplicationCard>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="524,89" sap2010:WorkflowViewState.IdRef="Sequence_50">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+      <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Download Discord to Talk, Chat, and Hang Out" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="526,529" sap2010:WorkflowViewState.IdRef="NApplicationCard_25" InteractionMode="DebuggerApi" IsDisplayNameAuto="True" ScopeGuid="74e030e3-0c38-4abd-83a2-5dbb668744c5" Version="V2">
+        <uix:NApplicationCard.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,280" sap2010:WorkflowViewState.IdRef="Sequence_52">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Download for Windows''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,218" sap2010:WorkflowViewState.IdRef="NClick_24" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="74e030e3-0c38-4abd-83a2-5dbb668744c5" Version="V4">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="discord.com/download" CVScreenId="dbc589f7-c1d3-4f7d-b712-0ce32b594cbf" CvElementArea="367, 633, 298, 56" CvTextArea="435, 652, 198, 18" CvTextArgument="Download for Windows" CvType="Button" DesignTimeRectangle="370, 636, 295, 52" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Download for Windows' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Download for Windows' tag='A' type='' class='button-bl download-button imagine download-other' check:innerText='Download for Windows' /&gt;" Guid="cc5b6b1f-da6c-4303-ba4b-947a402528ef" InformativeScreenshot="69436f629989e37a4240984d88d0d6b2.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Download Discord to Talk, Chat, and Hang Out' /&gt;" SearchSteps="FuzzySelector, CV" Version="V5" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <uix:NClick.VerifyOptions>
+                  <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionOptions.Retry>
+                    <uix:VerifyExecutionOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionOptions.Timeout>
+                  </uix:VerifyExecutionOptions>
+                </uix:NClick.VerifyOptions>
+              </uix:NClick>
+            </Sequence>
+          </ActivityAction>
+        </uix:NApplicationCard.Body>
+        <uix:NApplicationCard.TargetApp>
+          <uix:TargetApp Area="-8, -8, 1936, 1048" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAnVJREFUWEfFl79LXEEQx62t7r9In3/CxvqusQp3aQQRi6QOpLZJe1ilkxSCIFjZ2Ah2qQOCpJIQz0Qu8cdzPvt2zr13332+O5U38JV1dvY782Z2dveWVjZXG6Hbv+wY1gxDw6nhwnATwRgdc9h0FIeCVKboDkZveoPLnV5/dN0bjIpGKG13WKs4U0glsMXLRrRtX3Mz46Ahwlo4jEv5AFJJ5N3+6LsiXQRw5bIxo7CI31rkF4roOQicxl31N/VP+eUv79wBdzUTqfPll0x7DrEckz0xCYDNoha8CszXVAAx9Y12+7uNEk31CvjyUsSvtz4Xho73W1fF191x8ePstkCOT/4Xn7f/Fl+G1wGM0SHYYMsaxeXo2tkSArBoOpaS7CED0a/fd4F8HmFNbRDmE98EsCYNIg6P/kXK+YW1itOBbwIYqkmw/vGqGI/vI938wlo4FDfANwGcqkmwdzCOVIsLHIob4JsAsgePqj06lRV0OXvFDfBNALL9Pnz6Eykexb+Gdjv/WXYEwthbUGUNrpTbge9sALRXVdJ6ftt/dMTY9dhUBS6fT+EByBKkDlzod5/3vkcYux6bqqQBpsB3dhOq9qOeHDJqDh1zah/k2hHfBCDbUDlZVGoCCG0oD6JqCdjlpLruXMjZ1JQgHETZo5iUpmTsdnY0dWaOHQ8Yo2Mu7Q7WMqe4J0fxU5cR5zlOqC0XjbJJgQ22rKm/kOJlxJ+m13GT6/apWxDga+o6LrPQ4oME8Exq9UkWg2jvUeqw9LT3LHeUmWjph4mDOrFZ2LGKtAnCWjiSmlchlSmIPJwTNe/GGWBra3JfnUIqFexrXuHn+erSA9raaSyQNbIcAAAAAElFTkSuQmCC" InformativeScreenshot="e44bb23efd27226737ce4f5f5435a442.jpg" Selector="&lt;html app='chrome.exe' title='Download Discord to Talk, Chat, and Hang Out' /&gt;" Url="https://discord.com/download" Version="V2" />
+        </uix:NApplicationCard.TargetApp>
+      </uix:NApplicationCard>
+      <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Afterburner" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="526,529" sap2010:WorkflowViewState.IdRef="NApplicationCard_26" InteractionMode="DebuggerApi" IsDisplayNameAuto="True" ScopeGuid="00ccb115-871b-4d48-aab4-ad31dfc4c163" Version="V2">
+        <uix:NApplicationCard.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,280" sap2010:WorkflowViewState.IdRef="Sequence_53">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''4.6.5 (Final)''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,218" sap2010:WorkflowViewState.IdRef="NClick_25" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="00ccb115-871b-4d48-aab4-ad31dfc4c163" Version="V4">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="msi.com/Landing/afterburner/graphics-cards" CVScreenId="69e7f7ab-d9b6-4073-814b-1e0aca0ee6d3" CvElementArea="687, 900, 255, 61" CvTextArea="765, 921, 98, 20" CvTextArgument="4.6.5 (Final)" CvType="Button" DesignTimeRectangle="690, 903, 250, 57" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl aria-role='button' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='button' tag='A' type='' class='kv__btn-text' aaname='                             4.6.5 (Final)                         ' check:innerText='4.6.5 (Final)' /&gt;" Guid="a90399bb-b206-47bb-ada6-3d6a72e0da8d" InformativeScreenshot="91c009f188d49397ee7c00ec371ca8db.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Afterburner' /&gt;" SearchSteps="FuzzySelector, CV" Version="V5" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <uix:NClick.VerifyOptions>
+                  <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionOptions.Retry>
+                    <uix:VerifyExecutionOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionOptions.Timeout>
+                  </uix:VerifyExecutionOptions>
+                </uix:NClick.VerifyOptions>
+              </uix:NClick>
+            </Sequence>
+          </ActivityAction>
+        </uix:NApplicationCard.Body>
+        <uix:NApplicationCard.TargetApp>
+          <uix:TargetApp Area="-8, -8, 1936, 1048" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="02845b14f6beaace6e9ea541891a36dc.jpg" Selector="&lt;html app='chrome.exe' title='Afterburner' /&gt;" Url="https://www.msi.com/Landing/afterburner/graphics-cards" Version="V2" />
+        </uix:NApplicationCard.TargetApp>
+      </uix:NApplicationCard>
+      <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Open Broadcaster Software | OBS" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="526,529" sap2010:WorkflowViewState.IdRef="NApplicationCard_27" InteractionMode="DebuggerApi" IsDisplayNameAuto="True" ScopeGuid="19545798-a265-45bc-9177-01edf739589f" Version="V2">
+        <uix:NApplicationCard.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,280" sap2010:WorkflowViewState.IdRef="Sequence_54">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''WindowsSupports Windows…''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,218" sap2010:WorkflowViewState.IdRef="NClick_26" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="19545798-a265-45bc-9177-01edf739589f" Version="V4">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="obsproject.com" CVScreenId="0af30b17-7f86-4b7e-9c0b-7264d6bf4396" CvElementArea="611, 553, 223, 54" CvTextArea="666, 569, 113, 21" CvTextArgument="Windows" CvType="Button" DesignTimeRectangle="613, 555, 220, 50" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl parentid='home_downloads' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='home_downloads' tag='A' type='' class='green_btn download-welcome' aaname='WindowsSupports Windows 10 and Windows 11' check:innerText='Windows&amp;#xA;Supports Windows 10 and Windows 11' /&gt;" Guid="7d455b3b-78ce-43a6-ba12-d8d27394e37d" InformativeScreenshot="42842b22c8e6f21b2a9db97cdc0ef5d3.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Open Broadcaster Software | OBS' /&gt;" SearchSteps="FuzzySelector, CV" Version="V5" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <uix:NClick.VerifyOptions>
+                  <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionOptions.Retry>
+                    <uix:VerifyExecutionOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionOptions.Timeout>
+                  </uix:VerifyExecutionOptions>
+                </uix:NClick.VerifyOptions>
+              </uix:NClick>
+            </Sequence>
+          </ActivityAction>
+        </uix:NApplicationCard.Body>
+        <uix:NApplicationCard.TargetApp>
+          <uix:TargetApp Area="-8, -8, 1936, 1048" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="867a01a7289491886f6e79c45ae86955.jpg" Selector="&lt;html app='chrome.exe' title='Open Broadcaster Software | OBS' /&gt;" Url="https://obsproject.com/" Version="V2" />
+        </uix:NApplicationCard.TargetApp>
+      </uix:NApplicationCard>
+      <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Epic Games Store | Download &amp; Play PC Games, Mods, DLC &amp; More – Epic Games" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="526,520" sap2010:WorkflowViewState.IdRef="NApplicationCard_28" InteractionMode="DebuggerApi" IsDisplayNameAuto="True" ScopeGuid="4aaef3ca-2bd8-4253-9fc4-3f6f3dabdd58" Version="V2">
+        <uix:NApplicationCard.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="454,280" sap2010:WorkflowViewState.IdRef="Sequence_55">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Download''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,218" sap2010:WorkflowViewState.IdRef="NClick_27" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4aaef3ca-2bd8-4253-9fc4-3f6f3dabdd58" Version="V4">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="store.epicgames.com/en-US" DesignTimeRectangle="1794, 201, 93, 32" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='EGS-NAVIGATION' /&gt;&lt;webctrl shadowhostid='' tag='EPIC-WF-CTA-BUTTON' /&gt;&lt;webctrl shadowhostid='' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='EGS-NAVIGATION' /&gt;&lt;webctrl shadowhostid='' tag='EPIC-WF-CTA-BUTTON' /&gt;&lt;webctrl shadowhostid='' tag='A' type='' class='cta-button ' aaname=' &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;Download &amp;#x9;&amp;#x9;&amp;#x9;' check:innerText='Download' /&gt;" Guid="c2b112b5-f653-4425-aaa1-e12adda22981" InformativeScreenshot="d5f235c5a519d06f025e0d54ad0f22f4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Epic Games Store | Download &amp;amp; Play PC Games, Mods, DLC &amp;amp; More – Epic Games' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <uix:NClick.VerifyOptions>
+                  <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionOptions.Retry>
+                    <uix:VerifyExecutionOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionOptions.Timeout>
+                  </uix:VerifyExecutionOptions>
+                </uix:NClick.VerifyOptions>
+              </uix:NClick>
+            </Sequence>
+          </ActivityAction>
+        </uix:NApplicationCard.Body>
+        <uix:NApplicationCard.TargetApp>
+          <uix:TargetApp Area="-8, -8, 1936, 1048" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIvSURBVDhPjZLda9JRGMe9q9uIbvobavm2XBdJ7qLly6YjG6nLtXbTEDQVXOqWwkYiKsgMofBCMF8yaKIkanPa1BBt1/4LQX9AXfXtOYef2yiNHvhwfr9zzvM9z/ecR8RCLpddI+LEm/8kQch5Mgv68RGQyaSQSiWno0Qi5uOfsL1EWEjnArssyel8hlQqBY/Hg2QyiUgkgs3NpzTvhN/vRzqdxvr6Y34A5ewL6WcChUIeuVwOgcALDAYDdDodNBoNVKtV9Ho9lEolFIvFcQV/C+TzeUSjUdjtdlQqFS7WbrdRr9dwdNTkFe7t7U4XKBQKODn5ikRiH6PRCMPhEAcHH0igTkItGI33oVbf+1cFOfLqw8bGE/T7faytWbmdw8NPaDab2NnZRiaTweysfLpAo1FHLBZDuVzmN+71Pqc7+Ihut4tWq0W2spMrYJMWixk+n5dXYLU+4gIajRpms4nffjAYgF6/NP0VFhbucpH5eRUMBj2Wlw1YWXmA1VULt8PWFhd1kwVYBaHQS2SzbxGPx+kVyvz7+PgzarUaPd87bjEcDk+2wFRNpoe8TJfLyZvH4bCTFSu2tjxkzQe3280ba5KAi00ykXG7isU3TmEtzdbGCAJBIZ0LXCEcxBfa8EOpvM1PCoVCHJvNBpXqDkv+SXsGhIe4KqSfBU1eIpYUips5rVbzze12/SKg02m/z80p3tOakbgsbJ8eVPKFmZnrt4hXxGtCSVYuCsvnQiT6DWg2oB3fdVIjAAAAAElFTkSuQmCC" InformativeScreenshot="e389e9b3fe0981c4b5a0241ba0bd2338.jpg" Selector="&lt;html app='chrome.exe' title='Epic Games Store | Download &amp;amp; Play PC Games, Mods, DLC &amp;amp; More – Epic Games' /&gt;" Url="https://store.epicgames.com/en-US/" Version="V2" />
+        </uix:NApplicationCard.TargetApp>
+      </uix:NApplicationCard>
+    </Sequence>
   </Sequence>
 </Activity>

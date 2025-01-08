@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryScreenData ContentHash="e251eVJRcUC0P6fDoNJgqw" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryScreenData.Data>
+    <TargetApp x:Key="TargetApp" Area="-8, -8, 1936, 1048" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE1SURBVDhP3dFNK0RhGMbxWzYY+QAWlFI2gw2yEgtN0URRkqVDmsVEbIyFBRamWYgsZ1Ia2SliMqspPoG3BcWOnZIS5eV/zZyYMaNZTrnr13mec85zdZ/72D+tqbj1zCXstpjArnW4RzLlxKySB36EMI8oHvBZCAFd6YMTW1bBjQWcYAYBnCKCRgTxjPyA2UPzsrnEEhqwjk13PYk7DKAF98gNYHGOI9TjET70Qx2oMwVeoxwbyAtwoPbqcIZRKEAvXUEDa4I6fMEOXpEJGF6xMjb7SKAZF1iD5rGKdqjDG601M669eP8eohM1DzcOcAzNZBwK0V4d6K9UoRbq5Ak/f0E1tJzuZAwpbKMbbejENJJ4Q+4MClVwz/p4Qd/7kX3gtz8D/CGrGQlbazGDi1btHilZmX0BI/YHkXVlN+sAAAAASUVORK5CYII=" Selector="&lt;html app='chrome.exe' title='Download NVIDIA App for Gamers and Creators | NVIDIA' /&gt;" Url="https://www.nvidia.com/en-us/software/nvidia-app/" Version="V2">
+      <imageRef attrName="InformativeScreenshot" originalValue="adb8d43a1babde424518381f5ecbb3e3.jpg" xmlns="">0PX5CKXb2pEuzkxqBm3muiw</imageRef>
+    </TargetApp>
+  </ObjectRepositoryScreenData.Data>
+</ObjectRepositoryScreenData>

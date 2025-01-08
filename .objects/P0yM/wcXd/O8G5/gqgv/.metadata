@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Label 'Instalează Steam'",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "gqgvOKatfUucuRWAJ71KxA",
+  "Reference": "EFwg_zIsiUOfr0Ex3fWmGA/gqgvOKatfUucuRWAJ71KxA",
+  "ParentRef": "EFwg_zIsiUOfr0Ex3fWmGA/O8G5rJpi7EqoweI3Uz0w6A",
+  "Created": "2025-01-08T21:45:43.7850123Z",
+  "Updated": "2025-01-08T21:45:43.7850123Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.12.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.12.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

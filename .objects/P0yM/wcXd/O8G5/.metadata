@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Chrome Steam, The Ultimate Online Game Platfo",
+  "Type": "Screen",
+  "Id": "O8G5rJpi7EqoweI3Uz0w6A",
+  "Reference": "EFwg_zIsiUOfr0Ex3fWmGA/O8G5rJpi7EqoweI3Uz0w6A",
+  "ParentRef": "EFwg_zIsiUOfr0Ex3fWmGA/wcXdeQT9gEOS0u84dyncOw",
+  "Created": "2025-01-08T21:45:43.5698903Z",
+  "Updated": "2025-01-08T21:45:43.5698903Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.12.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.12.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

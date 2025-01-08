@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Label 'Download Now'",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "njc8131pxE6P1aiSaNpm9w",
+  "Reference": "EFwg_zIsiUOfr0Ex3fWmGA/njc8131pxE6P1aiSaNpm9w",
+  "ParentRef": "EFwg_zIsiUOfr0Ex3fWmGA/trI1eV5kW0Koz2Pvh_wrpQ",
+  "Created": "2025-01-08T21:37:35.2275562Z",
+  "Updated": "2025-01-08T21:37:35.2275562Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.12.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.12.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

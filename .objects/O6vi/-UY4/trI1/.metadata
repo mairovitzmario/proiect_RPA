@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Chrome Download NVIDIA App for Gamers and Cre",
+  "Type": "Screen",
+  "Id": "trI1eV5kW0Koz2Pvh_wrpQ",
+  "Reference": "EFwg_zIsiUOfr0Ex3fWmGA/trI1eV5kW0Koz2Pvh_wrpQ",
+  "ParentRef": "EFwg_zIsiUOfr0Ex3fWmGA/-UY4dC_i7kycu_5ntfG_5g",
+  "Created": "2025-01-08T21:37:34.4976411Z",
+  "Updated": "2025-01-08T21:37:34.4976411Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.12.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.12.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="60_4JqxVD0qjC1c2YzyRxg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="store.steampowered.com/about" DesignTimeRectangle="491, 654, 260, 48" DesignTimeScaleFactor="1" ElementType="Text" FuzzySelectorArgument="&lt;webctrl class='about_install_steam_link' tag='A' type='' aaname='Instalează Steam' check:innerText='INSTALEAZĂ STEAM' /&gt;" Guid="f9d4bc6e-de15-451a-a06e-fec644006190" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Steam, Platforma Online Esențială pentru Jocuri' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target DesignTimeRectangle="491, 405, 470, 334" FuzzySelectorArgument="&lt;webctrl type='' class='' tag='DIV' aaname=' &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;' check:innerText='Steam este destinația supremă unde te poți juca, discuta și crea jocuri.&amp;#xA;ONLINE&amp;#xA;27,816,645&amp;#xA;SE JOACĂ' /&gt;" Guid="cf699cfa-0306-4128-8a2d-63cf2b142973" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="1a5a1fdb3ca89cb3448f6d4b003df1de.png" xmlns="">0WMyYowTUmUaSfmp54_eITQ</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">None</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>
